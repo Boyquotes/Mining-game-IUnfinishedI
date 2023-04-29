@@ -10,7 +10,7 @@ class_name  Player
 var speed : float = 0.0
 var gravity : int = 10
 var max_speed : float = 10.0 
-var stamina : float = 250
+var stamina : float = 300
 var running : bool = false
 var coins : int
 var last_direction : Vector3
