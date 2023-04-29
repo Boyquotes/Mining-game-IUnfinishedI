@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name  Player
 
 @export var max_walk_speed : float = 10.0 
-@export var max_run_speed : float = 20.0 
+@export var max_run_speed : float = 15.0 
 @export var jump_velocity : float = 4.5 
 @export var health : float = 100
 @export var max_stamina : float = 250
