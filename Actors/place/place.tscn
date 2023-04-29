@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsmap61wt1w6t"]
+
+[ext_resource type="Script" path="res://Scripts/place/place.gd" id="1_7e1bt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xff1o"]
+size = Vector3(1, 1.703, 1)
+
+[node name="Place" type="StaticBody3D" groups=["place"]]
+script = ExtResource("1_7e1bt")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(8, 0.136, 8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+operation = 2
+size = Vector3(7.528, 0.787, 7.528)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.550142, 4.10045)
+size = Vector3(0.537947, 1.45745, 0.499798)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684755, 4.01273)
+shape = SubResource("BoxShape3D_xff1o")

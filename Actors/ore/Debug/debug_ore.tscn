@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://5dnugds2r3xl"]
+
+[ext_resource type="PackedScene" uid="uid://ceff0jbxehqwi" path="res://Actors/ore/miners_ore_base.tscn" id="1_b6ral"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xponh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c028t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tj3p8"]
+radius = 8.83789
+
+[node name="debug_ore" instance=ExtResource("1_b6ral")]
+health = 10.0
+type = "Minerals"
+Ore_name = "coal"
+drop_min = 20
+drop_max = 25
+
+[node name="MeshInstance3D" parent="." index="0"]
+mesh = SubResource("BoxMesh_xponh")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("BoxShape3D_c028t")
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("SphereShape3D_tj3p8")
+
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

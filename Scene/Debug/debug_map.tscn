@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://b47sgklcgd3w5"]
+
+[ext_resource type="PackedScene" uid="uid://5dnugds2r3xl" path="res://Actors/ore/Debug/debug_ore.tscn" id="1_0sbfj"]
+[ext_resource type="PackedScene" uid="uid://d1uk0kecuppfa" path="res://Actors/Player/player.tscn" id="1_jnjt8"]
+[ext_resource type="PackedScene" uid="uid://bsmap61wt1w6t" path="res://Actors/place/place.tscn" id="2_x25en"]
+[ext_resource type="PackedScene" uid="uid://dm17sx1egkvoc" path="res://Actors/sell_ore/sell_debug.tscn" id="2_yi8kk"]
+[ext_resource type="Environment" uid="uid://bwo7kc2kvbmlp" path="res://Singletons/debug_map.tres" id="4_gkuq1"]
+
+[node name="Debug_map" type="Node3D"]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="rocks" type="Node3D" parent="World"]
+
+[node name="debug_ore" parent="World/rocks" instance=ExtResource("1_0sbfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2626, 0.629379, 4.67628)
+
+[node name="debug_ore2" parent="World/rocks" instance=ExtResource("1_0sbfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2626, 0.629379, -0.118459)
+Ore_name = "gold"
+
+[node name="debug_ore3" parent="World/rocks" instance=ExtResource("1_0sbfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2626, 0.629379, -3.96688)
+Ore_name = "diamond"
+
+[node name="debug_ore4" parent="World/rocks" instance=ExtResource("1_0sbfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2626, 0.629379, -7.93893)
+Ore_name = "mosaic"
+
+[node name="debug_ore5" parent="World/rocks" instance=ExtResource("1_0sbfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75631, 0.629379, 4.67628)
+
+[node name="debug_ore6" parent="World/rocks" instance=ExtResource("1_0sbfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75631, 0.629379, -0.118459)
+Ore_name = "gold"
+
+[node name="debug_ore7" parent="World/rocks" instance=ExtResource("1_0sbfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75631, 0.629379, -3.96688)
+Ore_name = "diamond"
+
+[node name="debug_ore8" parent="World/rocks" instance=ExtResource("1_0sbfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75631, 0.629379, -7.93893)
+Ore_name = "mosaic"
+
+[node name="map" type="Node3D" parent="World"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="World/map"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="World/map/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(51.4448, 2, 61.8992)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="World/map/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -15.0871, -1, 0)
+size = Vector3(30, 2, 30)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="World/map/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.276773, 0)
+inner_radius = 2.552
+outer_radius = 3.38412
+sides = 19
+ring_sides = 11
+
+[node name="Places" type="Node3D" parent="World"]
+
+[node name="Place" parent="World/Places" instance=ExtResource("2_x25en")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 17.5213)
+
+[node name="light" type="Node3D" parent="World"]
+
+[node name="lights" type="Node3D" parent="World/light"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World/light/lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 3
+omni_range = 8.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="World/light/lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.768, 1, 0)
+layers = 3
+omni_range = 29.398
+
+[node name="SpotLight3D" type="SpotLight3D" parent="World/light/lights"]
+transform = Transform3D(-3.78632e-08, -0.499683, 0.866209, -2.18418e-08, 0.866209, 0.499683, -1, 3.37508e-14, -4.37114e-08, 14.4829, 3, 0)
+layers = 3
+light_color = Color(0.788235, 1, 1, 1)
+light_energy = 6.4
+spot_range = 29.437
+spot_angle = 55.3085
+
+[node name="sell_debug" parent="World" instance=ExtResource("2_yi8kk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5023, 0.917675, 1.57944)
+
+[node name="Player_actor" type="Node3D" parent="."]
+
+[node name="Player" parent="Player_actor" instance=ExtResource("1_jnjt8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_gkuq1")

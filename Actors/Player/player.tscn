@@ -1,0 +1,488 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1uk0kecuppfa"]
+
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_1234g"]
+[ext_resource type="Script" path="res://Scripts/Player/Drill/Drill.gd" id="2_ty17y"]
+[ext_resource type="PackedScene" uid="uid://cagsas4vwbvn4" path="res://Assets/Player/drill/drill.glb" id="3_uraew"]
+[ext_resource type="Texture2D" uid="uid://etgpav2uk7ek" path="res://Assets/Player/drill/drill_DefaultMaterial_BaseColor.png" id="4_qbqa5"]
+[ext_resource type="Texture2D" uid="uid://dexiomnkel5m" path="res://Assets/Player/drill/drill_DefaultMaterial_Emissive.png" id="5_bea7a"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8tqo6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_koiij"]
+albedo_texture = ExtResource("4_qbqa5")
+emission_enabled = true
+emission_texture = ExtResource("5_bea7a")
+
+[sub_resource type="Animation" id="Animation_6sw53"]
+resource_name = "Drill | Drilling"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drill_asset:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.523599, 0), Vector3(0, -0.523599, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Drill_asset:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.346984, 0, -0.440962), Vector3(-0.346984, 0, -0.619653), Vector3(-0.346984, 0, -0.440962)]
+}
+
+[sub_resource type="Animation" id="Animation_r8do7"]
+resource_name = "Drill | Run"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drill_asset/drill/Armature001/Skeleton3D/Cube:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.39556, -1.86349, -3.20333), Vector3(-1.66564, -1.86349, -3.17834), Vector3(-2.39556, -1.86349, -3.20333)]
+}
+
+[sub_resource type="Animation" id="Animation_3gukt"]
+resource_name = "Drill | Walk "
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drill_asset:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.523599, 0), Vector3(0, -0.523599, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Drill_asset/drill/Armature001:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(5.112, -0.25, 0, 0.25, 0, 5.112, -0.25, 0, 0.25, 0, 5.112, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drill_asset/drill/Armature001:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.051, -0.25, 0, 0.25, 0, 0.237975, -0.25, 0, 0.25, 0, 0.051, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drill_asset/drill/Armature001:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.303, -0.25, 0, 0.25, 0, -0.303, -0.25, 0, 0.25, 0, -0.303, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_awc1m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drill_asset:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.489373, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Drill_asset:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.346984, 0, -0.440962)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drill_asset/drill/Armature001:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5.112, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drill_asset/drill/Armature001:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.051, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Drill_asset/drill/Armature001:position:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.303, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Drill_asset/drill/Armature001/Skeleton3D/Cube:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.39556, -1.86349, -3.20333)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3mggp"]
+_data = {
+"Drill | Drilling": SubResource("Animation_6sw53"),
+"Drill | Run": SubResource("Animation_r8do7"),
+"Drill | Walk ": SubResource("Animation_3gukt"),
+"RESET": SubResource("Animation_awc1m")
+}
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_1234g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8tqo6")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.710375, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+cull_mask = 1048573
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="head/Camera3D"]
+light_mask = 2
+visibility_layer = 2
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="head/Camera3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4294966274
+render_target_update_mode = 4
+
+[node name="Drill_Camera" type="Camera3D" parent="head/Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716177, 0)
+cull_mask = 1047554
+
+[node name="Drill" type="Node3D" parent="head/Camera3D/SubViewportContainer/SubViewport/Drill_Camera"]
+script = ExtResource("2_ty17y")
+
+[node name="Drill_asset" type="Node3D" parent="head/Camera3D/SubViewportContainer/SubViewport/Drill_Camera/Drill"]
+transform = Transform3D(0.882628, 0, -0.470073, 0, 1, 0, 0.470073, 0, 0.882628, -0.346984, 0, -0.440962)
+
+[node name="drill" parent="head/Camera3D/SubViewportContainer/SubViewport/Drill_Camera/Drill/Drill_asset" instance=ExtResource("3_uraew")]
+transform = Transform3D(0.14424, 0, -0.249831, 0, 0.28848, 0, 0.249831, 0, 0.14424, -0.413466, 0.0301031, -1.0809)
+
+[node name="Armature001" parent="head/Camera3D/SubViewportContainer/SubViewport/Drill_Camera/Drill/Drill_asset/drill" index="0"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 5.112, 0.051, -0.303)
+
+[node name="Skeleton3D" parent="head/Camera3D/SubViewportContainer/SubViewport/Drill_Camera/Drill/Drill_asset/drill/Armature001" index="0"]
+motion_scale = 10.0
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+
+[node name="Cube" parent="head/Camera3D/SubViewportContainer/SubViewport/Drill_Camera/Drill/Drill_asset/drill/Armature001/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 1.11759e-08, 0, 1, 0, -1.11759e-08, 0, 1, -2.39556, -1.86349, -3.20333)
+layers = 2
+surface_material_override/0 = SubResource("StandardMaterial3D_koiij")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/SubViewportContainer/SubViewport/Drill_Camera/Drill"]
+libraries = {
+"": SubResource("AnimationLibrary_3mggp")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -2.5, 0)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="base_ui" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="health" type="Label" parent="UI/base_ui"]
+layout_mode = 0
+offset_top = 566.0
+offset_right = 127.0
+offset_bottom = 618.0
+scale = Vector2(0.894758, 0.894758)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "health :"
+metadata/_edit_use_anchors_ = true
+
+[node name="stamina" type="Label" parent="UI/base_ui"]
+layout_mode = 0
+offset_top = 593.0
+offset_right = 164.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(0, 0.356863, 0.733333, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "stamina : "
+metadata/_edit_use_anchors_ = true
+
+[node name="coins" type="Label" parent="UI/base_ui"]
+layout_mode = 0
+offset_top = 536.0
+offset_right = 164.0
+offset_bottom = 588.0
+theme_override_colors/font_color = Color(0.803922, 0.803922, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "coins :"
+metadata/_edit_use_anchors_ = true
+
+[node name="ore_health" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/ore_health"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = 98.0
+offset_right = 78.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventory" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/Inventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -230.0
+offset_right = -394.0
+offset_bottom = -190.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(22.5189, 11.0583)
+mouse_filter = 2
+color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[node name="Label" type="Label" parent="UI/Inventory"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 115.0
+offset_right = 346.0
+offset_bottom = 175.0
+theme_override_font_sizes/font_size = 41
+text = "Minerals"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="UI/Inventory"]
+layout_mode = 0
+offset_left = 597.0
+offset_top = 115.0
+offset_right = 769.0
+offset_bottom = 175.0
+theme_override_font_sizes/font_size = 41
+text = "Crystal"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="UI/Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.548611
+anchor_top = 0.541667
+anchor_right = 0.548611
+anchor_bottom = 0.541667
+offset_left = 174.0
+offset_top = 115.0
+offset_right = 346.0
+offset_bottom = 175.0
+theme_override_font_sizes/font_size = 41
+text = "Minerals"
+metadata/_edit_use_anchors_ = true
+
+[node name="Minerals" type="VBoxContainer" parent="UI/Inventory"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 181.0
+offset_right = 212.0
+offset_bottom = 221.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Label3" type="Label" parent="UI/Inventory/Minerals"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label4" type="Label" parent="UI/Inventory/Minerals"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label5" type="Label" parent="UI/Inventory/Minerals"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label6" type="Label" parent="UI/Inventory/Minerals"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label7" type="Label" parent="UI/Inventory/Minerals"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label8" type="Label" parent="UI/Inventory/Minerals"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label9" type="Label" parent="UI/Inventory/Minerals"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label10" type="Label" parent="UI/Inventory/Minerals"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Crystal" type="VBoxContainer" parent="UI/Inventory"]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 181.0
+offset_right = 689.0
+offset_bottom = 515.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Label3" type="Label" parent="UI/Inventory/Crystal"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label4" type="Label" parent="UI/Inventory/Crystal"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label5" type="Label" parent="UI/Inventory/Crystal"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label6" type="Label" parent="UI/Inventory/Crystal"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label7" type="Label" parent="UI/Inventory/Crystal"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="Label8" type="Label" parent="UI/Inventory/Crystal"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Minerals"
+
+[node name="prompt" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = 215.0
+offset_right = 70.5
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+
+[editable path="head/Camera3D/SubViewportContainer/SubViewport/Drill_Camera/Drill/Drill_asset/drill"]

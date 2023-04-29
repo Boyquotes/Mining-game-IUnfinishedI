@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://bwo7kc2kvbmlp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hhwee"]
+
+[sub_resource type="Sky" id="Sky_eon4d"]
+sky_material = SubResource("ProceduralSkyMaterial_hhwee")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_eon4d")
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+volumetric_fog_density = 0.0184
+adjustment_saturation = 8.0
