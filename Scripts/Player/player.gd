@@ -177,3 +177,8 @@ func place():
 	if raycast.is_colliding():
 		if raycast.get_collider().is_in_group("place"):
 				prompt.text = raycast.get_collider().prompt 
+				if Input.is_action_just_pressed("interact"):
+					if raycast.get_collider().in_UI == true:
+						raycast.get_collider().in_UI = false
+					else :
+						raycast.get_collider().in_UI = true
