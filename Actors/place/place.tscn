@@ -29,7 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684755, 4.01273)
 shape = SubResource("BoxShape3D_xff1o")
 
 [node name="Control" type="Control" parent="."]
-visible = false
+top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,28 +50,27 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.708373, 0.708373)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-layout_mode = 0
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer"]
 offset_left = 192.0
-offset_top = 143.0
+offset_top = 120.0
 offset_right = 635.0
-offset_bottom = 474.0
-theme_override_constants/separation = 50
+offset_bottom = 578.0
+theme_override_constants/separation = 20
 
-[node name="Button" type="Button" parent="Control/VBoxContainer"]
+[node name="Button" type="Button" parent="Control/CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "dwadawddwadwa"
 
-[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+[node name="Button2" type="Button" parent="Control/CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "dwadawddwadwa"
 
-[node name="Button3" type="Button" parent="Control/VBoxContainer"]
+[node name="Button3" type="Button" parent="Control/CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "dwadawddwadwa"
+
+[node name="Button4" type="Button" parent="Control/CanvasLayer/VBoxContainer"]
+visible = false
+layout_mode = 2
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.08629)
@@ -79,7 +78,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.08629)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_74naf")
 
-[connection signal="pressed" from="Control/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[node name="building" type="Node3D" parent="."]
+
+[connection signal="button_up" from="Control/CanvasLayer/VBoxContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/VBoxContainer/Button2" to="." method="_on_button_2_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/VBoxContainer/Button3" to="." method="_on_button_3_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/VBoxContainer/Button4" to="." method="_on_button_4_button_up"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -14,6 +14,7 @@ var stamina : float = 300
 var running : bool = false
 var coins : int
 var last_direction : Vector3
+var in_UI : bool = false
 
 @onready var head := $head
 @onready var camera := $head/Camera3D
@@ -117,7 +118,7 @@ func stamina_functions(delta):
 		stamina += delta * 5
 
 func animations():
-	if Input.is_action_pressed("Drill"):
+	if Input.is_action_pressed("Drill") and in_UI == false:
 		anim_play.play("Drill | Drilling")
 	elif velocity != Vector3.ZERO and max_speed == max_walk_speed:
 		anim_play.play("Drill | Walk ")
@@ -180,5 +181,7 @@ func place():
 				if Input.is_action_just_pressed("interact"):
 					if raycast.get_collider().in_UI == true:
 						raycast.get_collider().in_UI = false
+						in_UI = false
 					else :
 						raycast.get_collider().in_UI = true
+						in_UI = true
