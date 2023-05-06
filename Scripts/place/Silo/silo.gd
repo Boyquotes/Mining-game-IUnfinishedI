@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends "res://Scripts/place/place.gd"
 
 #var Silo_upgrades : Dictionary = {"level":1,"speed":1,"storage":1}
 #var Silo_func : Dictionary = {"max_ammount":(500 * Silo_upgrades["storage"])}
@@ -9,7 +9,7 @@ extends StaticBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	print("prompthuh")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

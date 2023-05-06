@@ -1,7 +1,7 @@
 # Mining-game
 a game about mining materials and selling them with many other goals
 
-created with Godot 4.0.0
+created with Godot 4.0.2
 
 # why did i created this
 i made this as a project so i can finaly finish something full and prove i can use godot
