@@ -15,6 +15,7 @@ var running : bool = false
 var coins : int
 var last_direction : Vector3
 var in_UI : bool = false
+var bonus_ore : int = 0
 
 @onready var head := $head
 @onready var camera := $head/Camera3D
@@ -60,8 +61,8 @@ func _ready():
 
 func _physics_process(delta):
 	animations()
-	stamina_functions(delta)
 	movement(delta)
+	stamina_functions(delta)
 	move_and_slide()
 	UI()
 	mining()
@@ -102,7 +103,7 @@ func UI():
 
 func stamina_functions(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor() == false and stamina >= 100:
-		velocity.y = jump_velocity * 1.5
+		velocity.y = jump_velocity * 2
 		stamina -= 100
 	elif Input.is_action_pressed("run") and stamina > 0 :
 		max_speed = max_run_speed

@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://gargsymwruht"]
+[gd_scene load_steps=5 format=3 uid="uid://gargsymwruht"]
+
+[ext_resource type="Script" path="res://Scripts/place/Miner/miner.gd" id="1_5xr34"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xci2q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_no0yb"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dsi18"]
+size = Vector3(15.626, 2.585, 15.626)
+
 [node name="Miner" type="StaticBody3D"]
+script = ExtResource("1_5xr34")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -13,3 +19,16 @@ mesh = SubResource("CapsuleMesh_xci2q")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_no0yb")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dsi18")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

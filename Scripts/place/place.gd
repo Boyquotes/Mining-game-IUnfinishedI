@@ -12,14 +12,13 @@ var place_type : Dictionary = {"Silo":false,"Refinery":false,"Miner":false}
 @onready var button_3 := $Control/CanvasLayer/VBoxContainer/Button4
 
 var button_text := ["Miner","Refinery","Silo","Destroy"]
+var button_active := [false,false,false]
 
 var Miner := preload("res://Actors/place/Miner/miner.tscn")
 var Silo := preload("res://Actors/place/Silo/silo.tscn")
 var Refinery := preload("res://Actors/place/Refinery/refinery.tscn")
 
-var Refinery_upgrades : Dictionary = {"level":1,"speed":1,"storage":1}
-
-var Miner_upgrades : Dictionary = {"level":1,"speed":1,"storage":1}
+var upgrades : Dictionary = {"level":1,"speed":1,"storage":1}
 
 var places := []
 
@@ -61,14 +60,17 @@ func _on_area_3d_body_entered(body):
 func _on_button_button_up():
 	var Miner_inst = Miner.instantiate()
 	place_building(100,Miner_inst,"Miner")
+	button_active[0] = true
 
 func _on_button_2_button_up():
 	var Refinery_inst = Refinery.instantiate()
 	place_building(50,Refinery_inst,"Refinery")
+	button_active[1] = true
 
 func _on_button_3_button_up():
 	var Silo_inst = Silo.instantiate()
 	place_building(10,Silo_inst,"Silo")
+	button_active[2] = true
 
 func _on_button_4_button_up():
 	for i in places:
